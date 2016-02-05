@@ -4,7 +4,8 @@
     "type": "cakephp-plugin",
     "require": {
         "php": ">=5.4.16",
-        "cakephp/cakephp": "~3.0"
+        "cakephp/cakephp": "~3.0",
+        "dompdf/dompdf": "0.7.x@beta"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
