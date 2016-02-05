@@ -1,0 +1,14 @@
+.header, .footer {
+    margin:0 -100px;
+    padding:0 100px;
+    width: 100%;
+    position: fixed;
+}
+.header {
+    top: -40pt;
+    padding-bottom: 0px;
+}
+.footer {
+    bottom: 10px;
+    padding-top: 5px;
+}
