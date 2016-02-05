@@ -1,7 +1,24 @@
 {
-    "name": "your-name-here/Dompdf",
+    "name": "daoandco/cakephp-dompdf",
     "description": "Dompdf plugin for CakePHP",
     "type": "cakephp-plugin",
+    "keywords": [
+        "cakephp",
+        "pdf",
+        "dompdf",
+        "html",
+        "css"
+    ],
+    "homepage": "https://github.com/DaoAndCo/cakephp-dompdf",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Flavien Beninca",
+            "email": "contact@flavienbeninca.fr",
+            "homepage": "http://www.flavienbeninca.fr",
+            "role": "Maintainer"
+        }
+    ],
     "require": {
         "php": ">=5.4.16",
         "cakephp/cakephp": "~3.0",
@@ -20,5 +37,10 @@
             "Dompdf\\Test\\": "tests",
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
         }
+    },
+    "support": {
+        "email": "contact+dompdf@flavienbeninca.fr",
+        "issues": "https://github.com/DaoAndCo/cakephp-dompdf/issues",
+        "source": "https://github.com/DaoAndCo/cakephp-dompdf"
     }
 }
