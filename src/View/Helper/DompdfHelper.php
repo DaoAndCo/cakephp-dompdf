@@ -45,4 +45,11 @@ class DompdfHelper extends Helper
         return $this->Html->tag('div', null, ['class' => 'page_break']);
     }
 
+    /**
+     * Write page number (use in header or footer)
+     * @return string <span>
+     */
+    public function page_number() {
+        return $this->Html->tag('span', null, ['class' => 'page_number']);
+    }
 }

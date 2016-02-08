@@ -17,3 +17,5 @@
     page: teacher;
     page-break-before: always;
 }
+
+.page_number:after { content: counter(page); }
