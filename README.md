@@ -104,9 +104,12 @@ Use the plugin layout by default `layout('Dompdf.default')`
 http://api.cakephp.org/3.1/class-Cake.View.ViewBuilder.html#_options
 Use array with key `config` and value `array` with dompdf config
   - filename : pdf name
+  - upload_filename : path with filename for upload render
   - render : 
     - browser : show in browser
     - download : download the pdf by browser
+    - upload : save file on the server
+    - stream : return a stream resource for sending file without save
   - size : paper size : default `A4`
   - orientation : paper orientation (`portait` OR `landscape`) : default `portrait`
   - dpi : Image DPI setting : default `192`
@@ -165,4 +168,52 @@ public function css($path, $plugin) {
 Exemple :
 ```PHP
 echo $this->Dompdf->css('mycss');
+```
+
+## Render
+
+### Display on browser
+``` PHP
+$this->viewBuilder()
+    ->className('Dompdf.Pdf')
+    ->layout('Dompdf.default')
+    ->options(['config' => [
+        'render' => 'browser',
+    ]]);
+```
+
+### Force download on browser
+``` PHP
+$this->viewBuilder()
+    ->className('Dompdf.Pdf')
+    ->layout('Dompdf.default')
+    ->options(['config' => [
+        'filename' => 'mydocument',
+        'render' => 'download',
+    ]]);
+```
+
+### Upload on server
+``` PHP
+$this->viewBuilder()
+    ->className('Dompdf.Pdf')
+    ->layout('Dompdf.default')
+    ->options(['config' => [
+        'upload_filename' => WWW_ROOT.'pdf/mydocument.pdf',
+        'render' => 'upload',
+    ]]);
+```
+
+### Stream
+``` PHP
+$builder = new ViewBuilder();
+$builder->className('Dompdf.Pdf')
+        ->layout('Dompdf.default')
+        ->template('Pdf/pdf/view')
+        ->options(['config' => [
+            'render' => 'stream',
+        ]]);
+$view = $builder->build();
+
+$stream = $view->render();
 ```
