@@ -85,7 +85,7 @@ Create a view (pdf content)
 <p>Boom !!!</p>
 ```
 
-Show the php : 
+Show the pdf in your browser : 
 http://dev.local/myproject/yop/view/test.pdf
 
 
