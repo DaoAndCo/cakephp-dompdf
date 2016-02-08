@@ -12,3 +12,8 @@
     bottom: 10px;
     padding-top: 5px;
 }
+
+.page_break {
+    page: teacher;
+    page-break-before: always;
+}

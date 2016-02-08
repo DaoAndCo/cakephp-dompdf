@@ -37,4 +37,12 @@ class DompdfHelper extends Helper
     	return $this->Html->tag('img', null, $options);
     }
 
+    /**
+     * Generate a page break
+     * @return string <div>
+     */
+    public function page_break() {
+        return $this->Html->tag('div', null, ['class' => 'page_break']);
+    }
+
 }
