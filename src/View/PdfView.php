@@ -40,8 +40,18 @@ class PdfView extends View {
 		$pdf->render();
 
 		switch ($this->config['render']) {
-			case 'browser': return $pdf->output(); break;
-			default: return $pdf->stream($this->config['filename']); break;
+            case 'browser':
+            case 'stream':
+                return $pdf->output();
+
+			case 'upload':
+                $output = $pdf->output();
+                if ( ! file_put_contents($this->config['upload_filename'], $output) )
+                    return false;
+
+                return $output;
+
+			default: return $pdf->stream($this->config['filename']);
 		}
 	}
 }

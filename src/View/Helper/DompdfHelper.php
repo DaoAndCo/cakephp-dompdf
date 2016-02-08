@@ -13,8 +13,9 @@ class DompdfHelper extends Helper
     protected $_defaultConfig = [];
 
     /**
-     * Ajout d'un fichier CSS
-     * @param  string $path : nom du fichier sans l'extension
+     * Creates a link element for CSS stylesheets
+     * @param  string $path : The name of a CSS style sheet
+     * @param  bool $plugin : (true) add a plugin css file || (false) add a file in webroot/css /// default : false
      * @return string <link>
      */
     public function css($path, $plugin = false) {
@@ -23,10 +24,10 @@ class DompdfHelper extends Helper
     }
 
     /**
-     * Balise image
-     * @param  string $path    : nom de l'image
-     * @param  array  $options : attributs
-     * @return string  <img>
+     * Générate an image
+     * @param  string $path : Path to the image file, relative to the app/webroot/img/ directory
+     * @param  array  $options : Array of HTML attributes
+     * @return string <img>
      */
     public function image($path, $options = []) {
 
