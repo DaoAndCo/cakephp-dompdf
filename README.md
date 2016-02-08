@@ -105,7 +105,7 @@ http://api.cakephp.org/3.1/class-Cake.View.ViewBuilder.html#_options
 Use array with key `config` and value `array` with dompdf config
   - filename : pdf name
   - upload_filename : path with filename for upload render
-  - render : 
+  - render : (see [render](#render) )
     - browser : show in browser
     - download : download the pdf by browser
     - upload : save file on the server
@@ -114,7 +114,7 @@ Use array with key `config` and value `array` with dompdf config
   - orientation : paper orientation (`portait` OR `landscape`) : default `portrait`
   - dpi : Image DPI setting : default `192`
   - isRemoteEnabled : Enable remote file access : default `true`
-  - isPhpEnabled : Enable embedded PHP : default `true`
+  - paginate: activate pagination (array) : default `false` (see [paginate](#paginate) )
   - More options : see dompdf documention https://github.com/dompdf/dompdf/wiki
 
 ## View
@@ -170,6 +170,16 @@ Exemple :
 echo $this->Dompdf->css('mycss');
 ```
 
+### Page break
+*with `dompdf.css`*
+```HTML
+<p>Page 1</p>
+
+<?= $this->Dompdf->page_break(); ?>
+
+<p>Page 2</p>
+```
+
 ## Render
 
 ### Display on browser
@@ -217,3 +227,38 @@ $view = $builder->build();
 
 $stream = $view->render();
 ```
+
+## Paginate
+
+### With helper
+You can show page number but not number of pages
+```HTML
+<!-- In a view -->
+<?php $this->start('footer'); ?>
+    <p><?= $this->Dompdf->page_number(); ?></p>
+<?php $this->end(); ?>
+```
+
+### With PdfView
+You can show page number and number of pages
+Use paginate key in view config
+```PHP
+$this->viewBuilder()
+    ->className('Dompdf.Pdf')
+    ->layout('Dompdf.default')
+    ->options(['config' => [
+        'filename' => $filename,
+        'render' => 'browser',
+        'paginate' => [
+            'x' => 550,
+            'y' => 5,
+        ],
+    ]]);
+```
+Paginate options :
+- x : left position : default `0`
+- y : top position : default `0`
+- font : font family : default `null`
+- size : font size : default `12`
+- text : default `"{PAGE_NUM} / {PAGE_COUNT}"`
+- color : rgb (array) : default `[0,0,0]` = black
