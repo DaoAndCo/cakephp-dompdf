@@ -216,9 +216,11 @@ $this->viewBuilder()
 
 ### Stream
 ``` PHP
+use Cake\View\ViewBuilder;
+
 $builder = new ViewBuilder();
 $builder->className('Dompdf.Pdf')
-        ->layout('Dompdf.default')
+        ->layout('Dompdf.pdf/default')
         ->template('Pdf/pdf/view')
         ->options(['config' => [
             'render' => 'stream',
