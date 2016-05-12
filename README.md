@@ -3,7 +3,7 @@
 ## Requirements
 - PHP version 5.4.16 or higher
 - CakePhp 3.0 or higher
-- Dompdf 0.7 beta
+- Dompdf 0.7
 
 ## Installation
 
@@ -12,7 +12,6 @@ You can install this plugin into your CakePHP application using [composer](http:
 The recommended way to install composer packages is:
 
 ```
-composer require dompdf/dompdf:0.7.x@beta
 composer require daoandco/cakephp-dompdf
 ```
 
@@ -86,22 +85,22 @@ Create a view (pdf content)
 <p>Boom !!!</p>
 ```
 
-Show the pdf in your browser : 
+Show the pdf in your browser :
 http://dev.local/myproject/yop/view/test.pdf
 
 
 ## Configuration
 Use `$this->viewBuilder()` with :
 
-- ->className() : set the view classname  
-http://api.cakephp.org/3.1/class-Cake.View.ViewBuilder.html#_className  
+- ->className() : set the view classname
+http://api.cakephp.org/3.1/class-Cake.View.ViewBuilder.html#_className
 Use the plugin view by default `className('Dompdf.Pdf')`
 
-- ->layout() : set the name of the layout file to render the view  
-http://api.cakephp.org/3.1/class-Cake.View.ViewBuilder.html#_layout  
+- ->layout() : set the name of the layout file to render the view
+http://api.cakephp.org/3.1/class-Cake.View.ViewBuilder.html#_layout
 Use the plugin layout by default `layout('Dompdf.default')`
 
-- ->options() : Set additional options for the view  
+- ->options() : Set additional options for the view
 http://api.cakephp.org/3.1/class-Cake.View.ViewBuilder.html#_options
 Use array with key `config` and value `array` with dompdf config
   - filename : pdf name

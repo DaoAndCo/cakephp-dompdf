@@ -22,7 +22,7 @@
     "require": {
         "php": ">=5.4.16",
         "cakephp/cakephp": "~3.0",
-        "dompdf/dompdf": "0.7.x@beta"
+        "dompdf/dompdf": "0.7.*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
