@@ -266,7 +266,7 @@ Paginate options :
 - color : rgb (array) : default `[0,0,0]` = black
 
 ## SSL
-If you are using ssl you want to use the [setHttpContext](https://github.com/dompdf/dompdf/wiki/Usage#sethttpcontext) of DomPDF
+If you are using ssl you want to use the [setHttpContext](https://github.com/dompdf/dompdf/wiki/Usage#sethttpcontext) of DomPDF.
 Use the ssl key in view config
 ```PHP
 $this->viewBuilder()
