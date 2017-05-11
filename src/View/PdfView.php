@@ -30,6 +30,12 @@ class PdfView extends View {
         'text'  => "{PAGE_NUM} / {PAGE_COUNT}",
         'color' => [0,0,0],
     ];
+	
+    private $_ssl = [
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true,
+    ];
 
     public function initialize() {
         parent::initialize();
@@ -47,7 +53,11 @@ class PdfView extends View {
 
 		$this->pdf = new Dompdf($this->config);
 		$this->pdf->setPaper($this->config['size'], $this->config['orientation']);
-
+	
+	if ( is_array($this->config['ssl']) ) {
+            $this->pdf->setHttpContext($this->sslContext());
+        }
+		
         $this->set(compact('pdf'));
 
 		$this->pdf->loadHtml(parent::render($view, $layout));
@@ -82,5 +92,14 @@ class PdfView extends View {
         $canvas = $this->pdf->get_canvas();
         $c = array_merge($this->_pagination, $this->config['paginate']);
         $canvas->page_text($c['x'], $c['y'], $c['text'], $c['font'], $c['size'], $c['color']);
+    }
+	
+    /**
+     * Grab the ssl params and create context
+     */
+    private function sslContext()
+    {
+        $context = array_merge($this->_ssl, $this->config['ssl']);
+        return stream_context_create(['ssl' => $context]);
     }
 }
