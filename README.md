@@ -264,3 +264,25 @@ Paginate options :
 - size : font size : default `12`
 - text : default `"{PAGE_NUM} / {PAGE_COUNT}"`
 - color : rgb (array) : default `[0,0,0]` = black
+
+## SSL
+If you are using ssl you want to use the [setHttpContext](https://github.com/dompdf/dompdf/wiki/Usage#sethttpcontext) of DomPDF
+Use the ssl key in view config
+```PHP
+$this->viewBuilder()
+    ->className('Dompdf.Pdf')
+    ->layout('Dompdf.default')
+    ->options(['config' => [
+        'filename' => $filename,
+        'render' => 'browser',
+        'ssl' => [ 
+          'verify_peer' => false, 
+          'verify_peer_name' => false,
+          'allow_self_signed'=> true 
+        ],
+    ]]);
+```
+SSL options :
+- verify_peer : default `false`
+- verify_peer_name : default `false`
+- allow_self_signed : default `true`
