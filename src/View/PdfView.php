@@ -48,6 +48,8 @@ class PdfView extends View {
 		$this->pdf = new Dompdf($this->config);
 		$this->pdf->setPaper($this->config['size'], $this->config['orientation']);
 
+        $pdf = $this->pdf;
+
         $this->set(compact('pdf'));
 
 		$this->pdf->loadHtml(parent::render($view, $layout));
